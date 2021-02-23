@@ -1,4 +1,5 @@
 import discord
+from discord.ext import commands
 import re
 import json
 from StringReplacer import StringReplacer
@@ -29,6 +30,7 @@ async def on_ready():
     print('We have logged in as {0.user}'.format(client))
 
 @client.event
+@commands.cooldown(1, 120, commands.BucketType.user)
 async def on_message(message):
     if message.author.bot:
         return
