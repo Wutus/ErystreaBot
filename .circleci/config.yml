@@ -28,7 +28,7 @@ jobs:
           command: echo {\"a\":\"b\"} > patterns.json
           name: Prepare test patterns
       - run:
-          command: chmod +x timeout.sh && ./timeout.sh 10 python erystreabot/run_bot.py -c config.json -p patterns.json 
+          command: chmod +x safe_timeout.sh && ./safe_timeout.sh 10 python erystreabot/run_bot.py -c config.json -p patterns.json 
           name: Run & connection test
   deploy-bot:
     executor: python/default
