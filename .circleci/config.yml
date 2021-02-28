@@ -1,0 +1,65 @@
+version: 2.1
+
+orbs:
+  python: circleci/python@1.3.2
+
+jobs:
+  unit-tests:
+    executor: python/default
+    steps:
+      - checkout
+      - run:
+          command: python -m pip install -r erystreabot/requirements.txt
+          name: Install packages
+      - run:
+          command: python ./erystreabot/tests.py
+          name: Unit tests
+  discord-connection-tests:
+    executor: python/default
+    steps:
+      - checkout
+      - run:
+          command: python -m pip install -r erystreabot/requirements.txt
+          name: Install packages
+      - run:
+          command: echo {\"token\":$ERYSTREA_BOT_TOKEN} > config.json
+          name: Prepare config
+      - run:
+          command: echo {\"a\":\"b\"} > patterns.json
+          name: Prepare test patterns
+      - run:
+          command: chmod +x timeout.sh && ./timeout.sh 10 python erystreabot/run_bot.py -c config.json -p patterns.json 
+          name: Run & connection test
+  deploy-bot:
+    executor: python/default
+    steps:
+      - checkout
+      - run:
+          command: scp -o StrictHostKeyChecking=no -P $DEPLOY_SSH_PORT -r erystreabot "$DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS:$DEPLOY_SSH_PATH/"
+          name: Copy current version
+      - run:
+          command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS "python -m pip install -r $DEPLOY_SSH_PATH/erystreabot/requirements.txt"
+          name: Install packages
+      - run:
+          command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS "echo {\"token\":$ERYSTREA_BOT_TOKEN} > $DEPLOY_SSH_PATH/config.json "
+          name: Write token
+      - run:
+          command: ssh -o StrictHostKeyChecking=no $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS 'tmux kill-server'
+          name: Kill previous instance
+      - run:
+          command: ssh -o StrictHostKeyChecking=no $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS 'tmux new-session -d python $DEPLOY_SSH_PATH/run_bot.py -c $DEPLOY_SSH_PATH/config.json -p $DEPLOY_SSH_PATH/patterns.json'
+          name: Start new instance
+
+workflows:
+  tests:
+    jobs:
+      - unit-tests
+      - discord-connection-tests
+  deploy:
+    jobs:
+      - deploy-bot:
+          filters:
+            branches:
+              only:
+                - master
+                - dev
