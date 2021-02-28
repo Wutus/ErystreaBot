@@ -5,5 +5,5 @@ from Message import Message
 
 class MessageResponder(Protocol):
     @abstractmethod
-    def prepare_response(self, message: Message):
+    def prepare_response(self, message: Message) -> str:
         raise NotImplementedError()

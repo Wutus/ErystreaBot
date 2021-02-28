@@ -31,22 +31,22 @@ class MessageResponderRegex(MessageResponder):
         merged_dict = {**meta_dict, **match_dict}
         return {f"[{k}]": v for k, v in merged_dict.items()}
 
-    def _process_match(self, meta_dict: Dict[str, str], m: typing.Match[str], content: str) -> str:
+    def _process_match(self, meta_dict: Dict[str, str], m: typing.Match[str], response_template: str) -> str:
         match_dict = {
             "0": m.group()
         }
         for i, g in enumerate(m.groups()):
             match_dict[f"{i+1}"] = g
         replace_dict = self._get_replace_dict(meta_dict, match_dict)
-        replaced_response = self._constant_replace(content, replace_dict)
+        replaced_response = self._constant_replace(response_template, replace_dict)
         return replaced_response
 
     def prepare_response(self, message: Message) -> Optional[str]:
         meta_dict = self._get_basic_meta_dict(message)
-        for pattern, response in self.pattern_dict.items():
+        for pattern, response_template in self.pattern_dict.items():
             if m := pattern.match(message.content):
                 logging.info(f"Matched message: {message.content}\n  from {message.author}\n to pattern {pattern}")
-                response = self._process_match(meta_dict, m, message.content)
+                response = self._process_match(meta_dict, m, response_template)
                 return response
         logging.info(f"No match for message {message.content} from {message.author}")
         return None

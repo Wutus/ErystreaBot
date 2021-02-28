@@ -19,9 +19,9 @@ class ErystreaBot(discord.Client):
         if message.author.bot:
             return
 
-        match_response = self.responder.prepare_response(message)
-        if match_response is not None:
-            await message.reply(match_response)
+        response = self.responder.prepare_response(message)
+        if response is not None:
+            await message.reply(response)
 
     def launch_bot(self):
         self.run(self.config["token"])
