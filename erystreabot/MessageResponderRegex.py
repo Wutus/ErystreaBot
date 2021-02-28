@@ -4,7 +4,8 @@ import discord
 import logging
 from Message import Message
 from MessageResponder import MessageResponder
-
+from typing import *
+import typing
 class MessageResponderRegex(MessageResponder):
 
     def __init__(self, patterns_str: Dict[str, str]):
@@ -21,7 +22,7 @@ class MessageResponderRegex(MessageResponder):
         replaced = replacer.process(s)
         return replaced
     
-    def _get_basic_meta_dict(self, message: discord.Message) -> Dict[re.Pattern[str], str]:
+    def _get_basic_meta_dict(self, message: discord.Message) -> Dict[typing.Pattern[str], str]:
         return {
             "user": f"<@{message.author.id}>"
         }
@@ -30,7 +31,7 @@ class MessageResponderRegex(MessageResponder):
         merged_dict = {**meta_dict, **match_dict}
         return {f"[{k}]": v for k, v in merged_dict.items()}
 
-    def _process_match(self, meta_dict: Dict[str, str], m: re.Match[str], content: str) -> str:
+    def _process_match(self, meta_dict: Dict[str, str], m: typing.Match[str], content: str) -> str:
         match_dict = {
             "0": m.group()
         }

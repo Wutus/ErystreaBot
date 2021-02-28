@@ -7,5 +7,9 @@ EXIT_CODE=$?
 set -e
 
 if [[ $EXIT_CODE != 124 ]]; then
-    exit $EXIT_CODE
+    if [[ $EXIT_CODE == 0 ]]; then
+        exit 124
+    else
+        exit $EXIT_CODE
+    fi
 fi
