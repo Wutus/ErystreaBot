@@ -132,5 +132,6 @@ dmypy.json
 .vscode/
 
 # Configuration
-/configure.json
+/erystrea_bot_config.json
+/erystrea_bot_test_config.json
 /patterns.json
