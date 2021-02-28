@@ -1,5 +1,5 @@
 from typing import *
-from abc import ab
+from abc import abstractmethod
 import discord
 from Author import Author
 class Message(Protocol):
