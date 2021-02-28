@@ -11,7 +11,6 @@ class MessageResponderRegex(MessageResponder):
         self.patterns_str = patterns_str
         self.patterns = self._prepare_pattern_dict(patterns_str)
 
-
     def _prepare_pattern_dict(self, str_dict: Dict[str, str]):
         return {
             re.compile(k, re.IGNORECASE): v for k, v in str_dict.items()
