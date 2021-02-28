@@ -22,13 +22,13 @@ jobs:
           command: python -m pip install -r erystreabot/requirements.txt
           name: Install packages
       - run:
-          command: echo {\"token\":$ERYSTREA_BOT_TOKEN} > config.json
+          command: echo {\"token\":\"$ERYSTREA_BOT_TOKEN\"} > config.json
           name: Prepare config
       - run:
           command: echo {\"a\":\"b\"} > patterns.json
           name: Prepare test patterns
       - run:
-          command: chmod +x safe_timeout.sh && ./safe_timeout.sh 10 python erystreabot/run_bot.py -c config.json -p patterns.json 
+          command: chmod +x safe_timeout.sh && ./safe_timeout.sh 10 'python erystreabot/run_bot.py -c config.json -p patterns.json'
           name: Run & connection test
   deploy-bot:
     executor: python/default
@@ -41,7 +41,7 @@ jobs:
           command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS "python -m pip install -r $DEPLOY_SSH_PATH/erystreabot/requirements.txt"
           name: Install packages
       - run:
-          command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS "echo {\"token\":$ERYSTREA_BOT_TOKEN} > $DEPLOY_SSH_PATH/erystreabot/config.json "
+          command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS "echo {\"token\":\"$ERYSTREA_BOT_TOKEN\"} > $DEPLOY_SSH_PATH/erystreabot/config.json "
           name: Write token
       - run:
           command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS 'tmux kill-server || true'
