@@ -1,7 +1,32 @@
 import unittest
 from typing import *
-from StringReplacer import StringReplacer
 from parameterized import parameterized
+
+from Author import Author
+from Message import Message
+
+from StringReplacer import StringReplacer
+from MessageResponderRegex import MessageResponderRegex
+
+class MockAuthor(Author):
+    def __init__(self, id):
+        self._id = id
+    
+    @property
+    def id(self):
+        return self._id
+class MockMessage(Message):
+    def __init__(self, content, author_id):
+        self._content = content
+        self._author = MockAuthor(author_id)
+
+    @property
+    def content(self):
+        return self._content
+    
+    @property
+    def author(self):
+        return self._author
 
 class StringReplacerTest(unittest.TestCase):
     @parameterized.expand([
@@ -32,6 +57,33 @@ class StringReplacerTest(unittest.TestCase):
         replacer = StringReplacer(consts, ignore_case)
         replaced_result = replacer.process(string)
         self.assertEqual(replaced_result, replaced)
+
+class MessageResponderRegexTest(unittest.TestCase):
+    def setUp(self):
+        patterns_dict = {
+            ".*\\bab\\b.*": "[user] wrote ab",
+            ".*\\bcD\\b.*": "[user] wrote cd",
+            ".*\\b(\d+)\\b.*": "[user] wrote [1]"
+        }
+        self.responder = MessageResponderRegex(patterns_dict)
+        super().setUp()
+
+    @parameterized.expand([
+        ["nothing_to_change_1", "dcba dcba", 123, None],
+        ["nothing_to_change_2", "Lorem ipsum", 456, None],
+        ["first_pattern_match_1", "b ab a", 123, "<@123> wrote ab"],
+        ["first_pattern_match_2", "B aB a", 456, "<@456> wrote ab"],
+        ["second_pattern_match_1", "CD and CI", 123, "<@123> wrote cd"],
+        ["second_pattern_match_2", "ci and cd", 456, "<@456> wrote cd"],
+        ["both_pattern_match_1", "ab and cd", 123, "<@123> wrote ab"],
+        ["both_pattern_match_2", "AB and CD", 456, "<@456> wrote ab"],
+        ["group_pattern_match_1", "nm 789 mn", 123, "<@123> wrote 789"],
+        ["group_pattern_match_2", "mn 987 mn", 456, "<@456> wrote 987"],
+    ])
+    def test_is_response_correct(self, method_name, message_content, author_id, expected_response):
+        message = MockMessage(message_content, author_id)
+        reponse = self.responder.prepare_response(message)
+        self.assertEqual(reponse, expected_response)
 
 if __name__ == '__main__':
     unittest.main()
