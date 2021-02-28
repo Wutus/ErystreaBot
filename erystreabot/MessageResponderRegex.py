@@ -10,7 +10,7 @@ class MessageResponderRegex(MessageResponder):
 
     def __init__(self, patterns_str: Dict[str, str]):
         self.patterns_str = patterns_str
-        self.patterns = self._prepare_pattern_dict(patterns_str)
+        self.pattern_dict = self._prepare_pattern_dict(patterns_str)
 
     def _prepare_pattern_dict(self, str_dict: Dict[str, str]):
         return {
@@ -42,7 +42,7 @@ class MessageResponderRegex(MessageResponder):
         return replaced_response
 
     def prepare_response(self, message: Message) -> Optional[str]:
-        meta_dict = self.get_basic_meta_dict(message)
+        meta_dict = self._get_basic_meta_dict(message)
         for pattern, response in self.pattern_dict.items():
             if m := pattern.match(message.content):
                 logging.info(f"Matched message: {message.content}\n  from {message.author}\n to pattern {pattern}")
