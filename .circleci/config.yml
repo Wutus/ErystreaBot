@@ -41,13 +41,13 @@ jobs:
           command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS "python -m pip install -r $DEPLOY_SSH_PATH/erystreabot/requirements.txt"
           name: Install packages
       - run:
-          command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS "echo {\"token\":$ERYSTREA_BOT_TOKEN} > $DEPLOY_SSH_PATH/config.json "
+          command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS "echo {\"token\":$ERYSTREA_BOT_TOKEN} > $DEPLOY_SSH_PATH/erystreabot/config.json "
           name: Write token
       - run:
           command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS 'tmux kill-server || true'
           name: Kill previous instance
       - run:
-          command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS 'tmux new-session -d python $DEPLOY_SSH_PATH/run_bot.py -c $DEPLOY_SSH_PATH/config.json -p $DEPLOY_SSH_PATH/patterns.json'
+          command: ssh -o StrictHostKeyChecking=no -p $DEPLOY_SSH_PORT $DEPLOY_SSH_USER_NAME@$DEPLOY_SSH_HOST_ADDRESS 'tmux new-session -d python $DEPLOY_SSH_PATH/erystreabot/run_bot.py -c $DEPLOY_SSH_PATH/erystreabot/config.json -p $DEPLOY_SSH_PATH/erystreabot/patterns.json'
           name: Start new instance
 
 workflows:
