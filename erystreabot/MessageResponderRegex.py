@@ -10,13 +10,13 @@ import typing
 
 class MessageResponderRegex(MessageResponder):
 
-    def __init__(self, dbContext: DbContext):
+    def __init__(self, dbContext):
         self.patterns_str = patterns_str
         self.context = dbContext
         self.pattern_dict = _prepare_pattern_dict()
 
     def _prepare_pattern_dict(self):
-        return {re.compile(key, re.IGNORECASE): response for key, response in dbContext.getAllReplacers()}
+        return {re.compile(key, re.IGNORECASE): response for key, response in dbContext.getAllReplacers().values()}
 
     def _constant_replace(self, s: str, d: Dict[str, str]):
         replacer = StringReplacer(d, ignore_case=True)

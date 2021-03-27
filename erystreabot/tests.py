@@ -8,6 +8,9 @@ from Message import Message
 from StringReplacer import StringReplacer
 from MessageResponderRegex import MessageResponderRegex
 
+import database.MockDbContext as mockContext 
+
+
 class MockAuthor(Author):
     def __init__(self, id):
         self._id = id
@@ -61,11 +64,12 @@ class StringReplacerTest(unittest.TestCase):
 class MessageResponderRegexTest(unittest.TestCase):
     def setUp(self):
         patterns_dict = {
-            ".*\\bab\\b.*": "[user] wrote ab",
-            ".*\\bcD\\b.*": "[user] wrote cd",
-            ".*\\b(\d+)\\b.*": "[user] wrote [1]"
+            {key: ".*\\bab\\b.*", response: "[user] wrote ab"},
+            {key: ".*\\bcD\\b.*", response: "[user] wrote cd"},
+            {key:".*\\b(\d+)\\b.*", response: "[user] wrote [1]"}
         }
-        self.responder = MessageResponderRegex(patterns_dict)
+        mockContext = mockContext.MockDbContext(patterns_dict)
+        self.responder = MessageResponderRegex(mockContext)
         super().setUp()
 
     @parameterized.expand([
