@@ -11,7 +11,7 @@ class MessageResponderRegex(MessageResponder):
 
     def __init__(self, dbContext):
         self.context = dbContext
-        self.pattern_dict = _prepare_pattern_dict()
+        self.pattern_dict = self._prepare_pattern_dict()
 
     def _prepare_pattern_dict(self):
         return {re.compile(key, re.IGNORECASE): response for key, response in self.context.getAllReplacers().values()}
