@@ -14,7 +14,7 @@ class MessageResponderRegex(MessageResponder):
         self.pattern_dict = self._prepare_pattern_dict()
 
     def _prepare_pattern_dict(self):
-        return {re.compile(key, re.IGNORECASE): response for key, response in self.context.getAllReplacers().values()}
+        return {re.compile(key, re.IGNORECASE): response for key, response in self.context.getAllReplacers("regex-replacer").values()}
 
     def _constant_replace(self, s: str, d: Dict[str, str]):
         replacer = StringReplacer(d, ignore_case=True)
