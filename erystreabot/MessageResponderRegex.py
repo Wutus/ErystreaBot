@@ -46,8 +46,7 @@ class MessageResponderRegex(MessageResponder):
     def prepare_response(self, message: Message) -> Optional[str]:
         meta_dict = self._get_basic_meta_dict(message)
         for pattern, response_template in self.pattern_dict.items():
-            if m:
-                = pattern.match(message.content):
+            if m:= pattern.match(message.content):
                 logging.info(
                     f"Matched message: {message.content}\n  from {message.author}\n to pattern {pattern}")
                 response = self._process_match(meta_dict, m, response_template)
