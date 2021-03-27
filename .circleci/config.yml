@@ -28,7 +28,7 @@ jobs:
           command: echo {\"a\":\"b\"} > patterns.json
           name: Prepare test patterns
       - run:
-          command: chmod +x safe_timeout.sh && ./safe_timeout.sh 10 'python erystreabot/run_bot.py -c config.json -s $ERYSTREA_BOT_CON_STRING -d $ERYSTREA_BOT_DB_NAME'
+          command: chmod +x safe_timeout.sh && ./safe_timeout.sh 10 "python erystreabot/run_bot.py -c config.json -s \"$ERYSTREA_BOT_CON_STRING\" -d \"$ERYSTREA_BOT_DB_NAME\""
           name: Run & connection test
   deploy-bot:
     executor: python/default
