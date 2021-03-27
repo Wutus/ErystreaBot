@@ -3,7 +3,7 @@ from MessageResponderRegex import MessageResponderRegex
 import logging
 import argparse
 import json
-import database.DbContext as dbContext
+import database.DbContext as dc
 
 
 def main():
@@ -19,7 +19,7 @@ def main():
     with open(args.configure_path, 'r', encoding="utf-8") as f:
         config = json.load(f)
 
-    dbContext = dbContext.DbContext(args.connection_string, args.database_name)
+    dbContext = dc.DbContext(args.connection_string, args.database_name)
     responder = MessageResponderRegex(dbContext)
     bot = ErystreaBot(config=config, responder=responder)
     bot.launch_bot()

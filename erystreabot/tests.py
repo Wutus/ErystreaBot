@@ -8,7 +8,7 @@ from Message import Message
 from StringReplacer import StringReplacer
 from MessageResponderRegex import MessageResponderRegex
 
-import database.MockDbContext as mockContext 
+import database.MockDbContext as mc 
 
 
 class MockAuthor(Author):
@@ -68,7 +68,7 @@ class MessageResponderRegexTest(unittest.TestCase):
             {key: ".*\\bcD\\b.*", response: "[user] wrote cd"},
             {key:".*\\b(\d+)\\b.*", response: "[user] wrote [1]"}
         }
-        mockContext = mockContext.MockDbContext(patterns_dict)
+        mockContext = mc.MockDbContext(patterns_dict)
         self.responder = MessageResponderRegex(mockContext)
         super().setUp()
 
