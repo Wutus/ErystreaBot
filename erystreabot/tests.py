@@ -64,9 +64,9 @@ class StringReplacerTest(unittest.TestCase):
 class MessageResponderRegexTest(unittest.TestCase):
     def setUp(self):
         patterns_dict = {
-            {key: ".*\\bab\\b.*", response: "[user] wrote ab"},
-            {key: ".*\\bcD\\b.*", response: "[user] wrote cd"},
-            {key:".*\\b(\d+)\\b.*", response: "[user] wrote [1]"}
+            type('',(object,),{key: ".*\\bab\\b.*", response: "[user] wrote ab"})(),
+            type('',(object,),{key: ".*\\bcD\\b.*", response: "[user] wrote cd"})(),
+            type('',(object,),{key: ".*\\b(\d+)\\b.*", response: "[user] wrote [1]"})()
         }
         mockContext = mc.MockDbContext(patterns_dict)
         self.responder = MessageResponderRegex(mockContext)
