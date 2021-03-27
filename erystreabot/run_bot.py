@@ -18,8 +18,6 @@ def main():
     args = parser.parse_args()
     with open(args.configure_path, 'r', encoding="utf-8") as f:
         config = json.load(f)
-    with open(args.patterns_path, 'r', encoding="utf-8") as f:
-        pattern_dict = json.load(f)
 
     dbContext = dbContext.DbContext(args.connection_string, args.database_name)
     responder = MessageResponderRegex(dbContext)
