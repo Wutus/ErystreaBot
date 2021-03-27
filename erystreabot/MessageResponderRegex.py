@@ -10,7 +10,6 @@ import typing
 class MessageResponderRegex(MessageResponder):
 
     def __init__(self, dbContext):
-        self.patterns_str = patterns_str
         self.context = dbContext
         self.pattern_dict = _prepare_pattern_dict()
 
