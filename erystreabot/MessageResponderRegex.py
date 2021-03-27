@@ -7,7 +7,6 @@ from MessageResponder import MessageResponder
 from typing import *
 import typing
 
-
 class MessageResponderRegex(MessageResponder):
 
     def __init__(self, dbContext):
@@ -16,7 +15,7 @@ class MessageResponderRegex(MessageResponder):
         self.pattern_dict = _prepare_pattern_dict()
 
     def _prepare_pattern_dict(self):
-        return {re.compile(key, re.IGNORECASE): response for key, response in dbContext.getAllReplacers().values()}
+        return {re.compile(key, re.IGNORECASE): response for key, response in self.context.getAllReplacers().values()}
 
     def _constant_replace(self, s: str, d: Dict[str, str]):
         replacer = StringReplacer(d, ignore_case=True)
