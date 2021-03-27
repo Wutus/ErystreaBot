@@ -1,0 +1,231 @@
+[
+    {
+        "key": "*\\bJD\\b.*",
+        "response": "[user], wiem, że Jest Dobrze!"
+    },
+    {
+        "key": "*\\btrendind\\b.*",
+        "response": "Z A B Ł Ą D Z I Ł E Ś"
+    },
+    {
+        "key": "*\\btulenka\\b.*", 
+        "response": "[user] HERESY DETECTED, BAN IMMINENT"
+    },
+    {
+        "key": "*\\btu lenka\\b.*", 
+        "response": "[user] HERESY DETECTED, BAN IMMINENT"
+    },
+    {
+        "key": "*\\brozwój osobisty\\b.*", 
+        "response": "[user] Weź się ogarnij"
+    },
+    {
+        "key": "*\\bkarta trending\\b.*", 
+        "response": "ZABŁĄDZIŁEŚ, ZAWRÓĆ"
+    },
+    {
+        "key": "*\\bjapoński\\b.*", 
+        "response": "[user] Omae wa mou shindeiru !"
+    },
+    {
+        "key": "*\\bjapońskiego\\b.*", 
+        "response": "[user] Omae wa mou shindeiru !"
+    },
+    {
+        "key": "*\\bstpeach\\b.*", 
+        "response": "[user] simp"
+    },
+    {
+        "key": "*\\bxqc\\b.*",
+        "response": "<@303631936880902145> Wooden SHIELD!"
+    },
+    {
+        "key": "*\\bwpm\\b.*", "response": "[user] :joy:"
+    },
+    {
+        "key": "*\\bxayoo\\b.*", "response": "[user] jd"
+    },
+    {
+        "key": "*\\bgta\\b.*",
+        "response": "<@152473211110555648>"
+    },
+    {
+        "key": "*\\brockstar\\b.*",
+        "response": "<@152473211110555648>"
+    },
+    {
+        "key": "*\\bxqcow\\b.*",
+        "response": "Wooden SHIELD!"
+    },
+    {
+        "key": "*\\bhejka tu lenka\\b.*", "response": "[user] HERESY DETECTED, BAN IMMINENT"
+    },
+    {
+        "key": "*\\bhentai\\b.*",
+        "response": "<@270881578371121152>"
+    },
+    {
+        "key": "*\\banime\\b.*",
+        "response": "<@270881578371121152>"
+    },
+    {
+        "key": "*\\bweeb\\b.*",
+        "response": "<@270881578371121152>"
+    },
+    {
+        "key": "*\\bjdk\\b.*", 
+        "response": "[user] Java Development Kit"
+    },
+    {
+        "key": "*\\bfrytki\\b.*", 
+        "response": "[user] Cola"
+    },
+    {
+        "key": "*\\bword per minute\\b.*", 
+        "response": "[user] :upside_down"
+    },
+    {
+        "key": "*\\bBeakl\\b.*", 
+        "response": "[user] QWERTY is the best keyboard layout :slight_smile:"
+    },
+    {
+        "key": "*\\bBeakl49JQVK\\b.*", 
+        "response": "[user] QWERTY is the best keyboard layout :slight_smile:"
+    },
+    {
+        "key": "*\\bkatakana\\b.*", 
+        "response": "[user] znałem kiedyś Katakana"
+    },
+    {
+        "key": "*\\bhitman\\b.*",
+        "response": "47 <@270881578371121152>"
+    },
+    {
+        "key": "*\\b47\\b.*",
+        "response": "<@270881578371121152>"
+    },
+    {
+        "key": "*\\b69\\b.*", 
+        "response": "[user] nice"
+    },
+    {
+        "key": "*\\b420\\b.*", 
+        "response": "[user] smoke mid every day"
+    },
+    {
+        "key": "*\\bchiny\\b.*",
+        "response": "<@152473211110555648>"
+    },
+    {
+        "key": "*\\baliexpress\\b.*",
+        "response": "<@152473211110555648>"
+    },
+    {
+        "key": "*\\bz chin\\b.*",
+        "response": "<@152473211110555648>"
+    },
+    {
+        "key": "*\\bzdałem\\b.*", "response": "[user] dziekan widzi wszystko"
+    },
+    {
+        "key": "*\\bcrysis\\b.*",
+        "response": "<@270881578371121152>"
+    },
+    {
+        "key": "*\\bkurwa\\b.*", "response": "[user] też kobieta"
+    },
+    {
+        "key": "*\\bjest jak jest\\b.*", "response": "[user] a co ma być to będzie"
+    },
+    {
+        "key": "*\\bkorona\\b.*", "response": "[user] na na na"
+    },
+    {
+        "key": "*\\bkek\\b.*",
+        "response": "kek kekownica kek"
+    },
+    {
+        "key": "*\\baha\\b.*",
+        "response": "mhm"
+    },
+    {
+        "key": "*\\b\\?\\b.*",
+        "response": "? :thinking: ?"
+    },
+    {
+        "key": "*\\bxd\\b.*", 
+        "response": "[user] xdera XD Xd xD xd"
+    },
+    {
+        "key": "*\\bkx\\b.*", 
+        "response": "[user] :man_facepalming:"
+    },
+    {
+        "key": "*\\bkd\\b.*", 
+        "response": "[user] kd ratio"
+    },
+    {
+        "key": "*\\bspokojnie\\b.*", 
+        "response": "[user] jak na wojnie, tu pierdolnie, tam pierdolnie i znowu jest spokojnie"
+    },
+    {
+        "key": "*\\blayout\\b.*", 
+        "response": "[user] QWERTY is King"
+    },
+    {
+        "key": "*\\bqwerty\\b.*", 
+        "response": "[user] QWERTY is the best"
+    },
+    {
+        "key": "*\\bbikl\\b.*",
+        "response": "MATI BIKL <@270881578371121152>"
+    },
+    {
+        "key": "*\\bhiragana\\b.*", 
+        "response": "[user] この言語を学ぶことは本当に価値がありますか？"
+    },
+    {
+        "key": "*\\bkanji\\b.*", 
+        "response": "[user] お前はもう死んでいる!"
+    },
+    {
+        "key": "*\\bjaponia\\b.*", 
+        "response": "[user] 不名誉より死を"
+    },
+    {
+        "key": "*\\bdisstream\\b.*", 
+        "response": "[user] Śnieżek prószy, mandarynek misa"
+    },
+    {
+        "key": "*\\bfriz\\b.*", 
+        "response": "[user] Do you want to be banned?"
+    },
+    {
+        "key": "*\\bpatostream\\b.*", 
+        "response": "[user] You will go and rethink your life"
+    },
+    {
+        "key": "*\\bdis\\b.*", 
+        "response": "[user] Śnieżek prószy, mandarynek misa"
+    },
+    {
+        "key": "*\\bmhm\\b.*",
+        "response": "aha"
+    },
+    {
+        "key": "*\\bElo\\b.*",
+        "response": "melo"
+    },
+    {
+        "key": "*\\b<@!152473211110555648>\\b.*",
+        "response": "[user] , na chuj wołasz tego frajera?"
+    },
+    {
+        "key": "*\\bjebać\\s+(\\S+)\\b.*", 
+        "response": "[user] , dlaczego chcesz jebać [1]?"
+    },
+    {
+        "key": "^pizda$",
+        "response": "Ogień!"
+    }
+]

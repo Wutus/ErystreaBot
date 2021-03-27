@@ -4,6 +4,7 @@ import logging
 from typing import *
 from MessageResponder import MessageResponder
 
+
 class ErystreaBot(discord.Client):
 
     def __init__(self, config: Dict[str, str], responder: MessageResponder, *args, **kwargs):
